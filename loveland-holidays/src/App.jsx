@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate  } from 'react-router-dom';
 import Loader    from './components/Loader';
 import Navbar    from './components/Navbar';
 import Hero      from './components/Hero';
@@ -55,6 +55,8 @@ export default function App() {
               <ContactUs />
             </>
           } />
+            {/* Fallback route */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </BrowserRouter>
