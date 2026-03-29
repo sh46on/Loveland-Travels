@@ -6,12 +6,12 @@ import {
   FaUser, FaComment, FaPaperPlane, FaCheckCircle,
   FaClock, FaArrowRight, FaHeart, FaGlobe,
   FaFacebook, FaInstagram, FaTwitter, FaYoutube,
-  FaRegClock
+  FaRegClock, FaWhatsapp
 } from 'react-icons/fa';
 import { HiOutlinePhone } from 'react-icons/hi';
 
 // ── All content sourced from siteData — nothing hardcoded ────────
-import { SITE, EMAILJS, NAV_LINKS, SERVICES, brand,} from '@/data/siteData';
+import { SITE, EMAILJS, NAV_LINKS, SERVICES, brand, } from '@/data/siteData';
 
 // ─────────────────────────────────────────────────────────────────
 //  ContactUs
@@ -20,66 +20,66 @@ const ContactUs = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-  name: '',
-  email: '',
-  phone: '',
-  destination: '',
-  message: ''
-});
+    name: '',
+    email: '',
+    phone: '',
+    destination: '',
+    message: ''
+  });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading]     = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (loading) return;
-  
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!formData.name || !emailRegex.test(formData.email) || !formData.message) {
-    alert('Please fill required fields');
-    return;
-  }
+    if (loading) return;
 
-  setLoading(true);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.name || !emailRegex.test(formData.email) || !formData.message) {
+      alert('Please fill required fields');
+      return;
+    }
 
-  try {
-    await emailjs.send(
-      EMAILJS.serviceId,
-      EMAILJS.templateId,
-      {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        destination: formData.destination || 'Not provided',
-        message: formData.message,
-      },
-      EMAILJS.publicKey
-    );
+    setLoading(true);
 
-    setSubmitted(true);
+    try {
+      await emailjs.send(
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          destination: formData.destination || 'Not provided',
+          message: formData.message,
+        },
+        EMAILJS.publicKey
+      );
 
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      destination: '',
-      message: ''
-    });
+      setSubmitted(true);
 
-    setTimeout(() => setSubmitted(false), 6000);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        destination: '',
+        message: ''
+      });
 
-  } catch (err) {
-    console.error('EmailJS Error:', err);
-    alert('Failed to send message. Try again.');
-  } finally {
-    setLoading(false);
-  }
-};
+      setTimeout(() => setSubmitted(false), 6000);
+
+    } catch (err) {
+      console.error('EmailJS Error:', err);
+      alert('Failed to send message. Try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Contact info blocks — pulled entirely from SITE
   const contactItems = [
@@ -881,31 +881,32 @@ const handleSubmit = async (e) => {
               {/* Social icons from SITE.social */}
               <div className="info-socials">
                 {
-  Object.entries(SITE.social).map(([key, value]) => {
-    const iconMap = {
-      facebook: FaFacebook,
-      instagram: FaInstagram,
-      twitter: FaTwitter,
-      youtube: FaYoutube,
-    };
+                  Object.entries(SITE.social).map(([key, value]) => {
+                    const iconMap = {
+                      facebook: FaFacebook,
+                      instagram: FaInstagram,
+                      whatsapp: FaWhatsapp,
+                      youtube: FaYoutube,
+                    };
 
-    const Icon = iconMap[key];
-    if (!Icon) return null;
+                    const Icon = value.icon || iconMap[key];
+                    if (!Icon) return null;
+                    const link = typeof value === 'string' ? value : value.link;
 
-    return (
-      <a
-        key={key}
-        href={value}
-        className="isoc-btn"
-        target="_blank"
-        rel="noreferrer"
-        aria-label={key}
-      >
-        <Icon size={15} />
-      </a>
-    );
-  })
-}
+                    return (
+                      <a
+                        key={key}
+                        href={link}
+                        className="isoc-btn"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={key}
+                      >
+                        <Icon size={15} />
+                      </a>
+                    );
+                  })
+                }
               </div>
             </div>
 
@@ -950,32 +951,32 @@ const handleSubmit = async (e) => {
                     </div>
                   </div>
                   <div className="field-row">
-                  <div className="field-group">
-                    <label className="field-label">Email Address</label>
-                    <div className="field-wrap">
-                      <span className="fi"><FaEnvelope size={14} /></span>
-                      <input
-                        className="cu-input" name="email" type="email"
-                        placeholder="you@example.com"
-                        value={formData.email} onChange={handleChange} required
-                      />
+                    <div className="field-group">
+                      <label className="field-label">Email Address</label>
+                      <div className="field-wrap">
+                        <span className="fi"><FaEnvelope size={14} /></span>
+                        <input
+                          className="cu-input" name="email" type="email"
+                          placeholder="you@example.com"
+                          value={formData.email} onChange={handleChange} required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="field-group">
+                      <label className="field-label">Destination (Optional)</label>
+                      <div className="field-wrap">
+                        <span className="fi"><FaGlobe size={14} /></span>
+                        <input
+                          className="cu-input"
+                          name="destination"
+                          placeholder="e.g. Munnar, Alleppey"
+                          value={formData.destination}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
                   </div>
-
-                  <div className="field-group">
-  <label className="field-label">Destination (Optional)</label>
-  <div className="field-wrap">
-    <span className="fi"><FaGlobe size={14} /></span>
-    <input
-      className="cu-input"
-      name="destination"
-      placeholder="e.g. Munnar, Alleppey"
-      value={formData.destination}
-      onChange={handleChange}
-    />
-  </div>
-</div>
-</div>
 
                   <div className="field-group">
                     <label className="field-label">Your Message</label>
@@ -1052,15 +1053,16 @@ const handleSubmit = async (e) => {
                   const iconMap = {
                     facebook: FaFacebook,
                     instagram: FaInstagram,
-                    twitter: FaTwitter,
-                    youtube: FaYoutube, 
+                    whatsapp: FaWhatsapp,
+                    youtube: FaYoutube,
                   };
-                  const Icon = iconMap[key];
+                  const Icon = value.icon || iconMap[key];
                   if (!Icon) return null;
+                  const link = typeof value === 'string' ? value : value.link;
                   return (
                     <a
                       key={key}
-                      href={value}
+                      href={link}
                       className="fsoc-btn"
                       target="_blank"
                       rel="noreferrer"

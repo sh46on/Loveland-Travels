@@ -42,7 +42,7 @@ export default function About() {
             {/* ── Image side ── */}
             <div style={{ position: 'relative' }}>
               <img
-                src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=800&q=80"
+                src="/images/about/Kerala_back_waters_About.jpg"
                 alt="Kerala backwaters at sunset"
                 loading="lazy"
                 style={{
@@ -57,8 +57,8 @@ export default function About() {
 
               {/* Accent thumbnail */}
               <img
-                src="https://images.unsplash.com/photo-1587135941948-670b381f08ce?w=400&q=80"
-                alt="Munnar tea gardens"
+                src="/images/about/JadayuPara.png"
+                alt="Jadayu Para, Kerala"
                 loading="lazy"
                 style={{
                   position:     'absolute',

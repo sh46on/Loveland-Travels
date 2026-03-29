@@ -1,7 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useScrolled } from '@/hooks/useScrolled';
 import { scrollTo } from '@/utils/scrollTo';
-import { NAV_LINKS } from '@/data/siteData';
+import { NAV_LINKS, SITE_NAME, SITE_LOGO } from '@/data/siteData';
+
+const logoStyles = `
+  @keyframes tilt {
+    0%   { transform: scale(1.08) rotateY(0deg); }
+    25%  { transform: scale(1.1) rotateY(8deg) rotateX(3deg); }
+    75%  { transform: scale(1.1) rotateY(-8deg) rotateX(-3deg); }
+    100% { transform: scale(1.08) rotateY(0deg); }
+  }
+  .logo-wrap {
+    perspective: 400px;
+  }
+  .logo-img {
+    transform: scale(1) rotateY(0deg);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .logo-btn:hover .logo-img {
+    animation: tilt 0.7s ease-in-out forwards;
+  }
+`;
 
 export default function Navbar() {
   const scrolled = useScrolled(60);
@@ -12,28 +31,44 @@ export default function Navbar() {
     setOpen(false);
   };
 
-  // 🔥 Lock scroll when menu open
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
+    document.body.style.overflow = open ? 'hidden' : 'auto';
   }, [open]);
 
   return (
     <>
+      <style>{logoStyles}</style>
+
       {/* NAVBAR */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-4'}`}
+          ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-4'}`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 h-14">
 
-          {/* LOGO */}
+          {/* LOGO + NAME — always visible on all screen sizes */}
           <button
             onClick={() => goto('home')}
-            className={`font-serif font-semibold tracking-wide transition-colors
-              text-[clamp(1.2rem,4vw,1.6rem)]
-              ${scrolled ? 'text-[#0077b6]' : 'text-white'}`}
+            className="logo-btn flex items-center gap-2.5 leading-none min-w-0"
           >
-            Loveland Holidays
+            {SITE_LOGO && (
+              <div className="logo-wrap flex-shrink-0">
+                <img
+                  src={SITE_LOGO}
+                  alt=""
+                  aria-hidden="true"
+                  className="logo-img w-10 h-10 md:w-14 md:h-14 object-contain"
+                />
+              </div>
+            )}
+
+            <span
+              className={`font-serif font-semibold tracking-wide transition-colors leading-none truncate
+                text-[clamp(1rem,3.5vw,1.6rem)]
+                ${scrolled ? 'text-[#0077b6]' : 'text-white'}`}
+            >
+              {SITE_NAME ?? 'Loveland Holidays'}
+            </span>
           </button>
 
           {/* DESKTOP MENU */}
@@ -50,7 +85,6 @@ export default function Navbar() {
                 </button>
               </li>
             ))}
-
             <li>
               <button
                 onClick={() => goto('enquiry')}
@@ -64,11 +98,12 @@ export default function Navbar() {
           {/* HAMBURGER */}
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden flex flex-col gap-1.5"
+            aria-label="Open menu"
+            className="md:hidden flex-shrink-0 flex flex-col justify-center items-center gap-1.5 w-9 h-9 ml-2"
           >
-            <span className={`w-6 h-[2px] ${scrolled ? 'bg-[#0077b6]' : 'bg-white'}`} />
-            <span className={`w-6 h-[2px] ${scrolled ? 'bg-[#0077b6]' : 'bg-white'}`} />
-            <span className={`w-6 h-[2px] ${scrolled ? 'bg-[#0077b6]' : 'bg-white'}`} />
+            <span className={`block w-6 h-[2px] ${scrolled ? 'bg-[#0077b6]' : 'bg-white'}`} />
+            <span className={`block w-6 h-[2px] ${scrolled ? 'bg-[#0077b6]' : 'bg-white'}`} />
+            <span className={`block w-6 h-[2px] ${scrolled ? 'bg-[#0077b6]' : 'bg-white'}`} />
           </button>
         </div>
       </nav>
@@ -76,13 +111,28 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       <div
         className={`fixed inset-0 z-[100] flex flex-col items-center justify-center gap-8
-        bg-[#0077b6]/95 backdrop-blur-md transition-transform duration-300
-        ${open ? 'translate-x-0' : 'translate-x-full'}`}
+          bg-[#0077b6]/95 backdrop-blur-md transition-transform duration-300
+          ${open ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        {/* CLOSE BUTTON */}
+        {/* Site name at top of mobile menu */}
+        <div className="absolute top-6 left-4 flex items-center gap-2.5">
+          {SITE_LOGO && (
+            <img
+              src={SITE_LOGO}
+              alt=""
+              aria-hidden="true"
+              className="w-9 h-9 object-contain"
+            />
+          )}
+          <span className="font-serif font-semibold text-white text-lg tracking-wide leading-none">
+            {SITE_NAME ?? 'Loveland Holidays'}
+          </span>
+        </div>
+
         <button
           onClick={() => setOpen(false)}
-          className="absolute top-6 right-6 text-white text-3xl"
+          aria-label="Close menu"
+          className="absolute top-5 right-6 text-white text-3xl leading-none"
         >
           ✕
         </button>

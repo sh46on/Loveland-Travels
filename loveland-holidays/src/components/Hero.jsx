@@ -1,25 +1,15 @@
 import { scrollTo } from '@/utils/scrollTo';
 import { useEffect, useState } from "react";
+import { SITE, stats, HERO_IMAGES  } from '@/data/siteData';
 
-const STATS = [
-  { value: '500+', label: 'Happy Travelers' },
-  { value: '50+',  label: 'Destinations'    },
-  { value: '10+',  label: 'Years Experience'},
-];
-
-const IMAGES = [
-  "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1920&q=80",
-  "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=1920&q=80",
-  "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1920&q=80",
-  "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1920&q=80",
-];
 
 export default function Hero() {
+  if (!HERO_IMAGES?.length) return null;
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % IMAGES.length);
+      setCurrent((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
@@ -32,7 +22,7 @@ export default function Hero() {
     >
       {/* Background slides */}
       <div className="absolute inset-0 z-0">
-        {IMAGES.map((img, index) => (
+        {HERO_IMAGES.map((img, index) => (
           <div
             key={index}
             className="absolute inset-0 transition-opacity duration-1000"
@@ -45,7 +35,7 @@ export default function Hero() {
                   rgba(0,130,180,0.30) 80%,
                   rgba(0,80,120,0.50) 100%
                 ),
-                url(${img})
+                url(${img.src})
               `,
               backgroundSize: "cover",
               backgroundPosition: "center top",
@@ -98,6 +88,7 @@ export default function Hero() {
         >
           <span style={{ fontSize: '0.65em', opacity: 0.8 }}>✦</span>
           Kerala · South India · Premium Travel
+          {/* {HERO_IMAGES[current].label} */}
         </div>
 
         {/* Heading */}
@@ -107,7 +98,7 @@ export default function Hero() {
             color: '#ffffff',
             lineHeight: 1.15,
             fontWeight: 400,
-            marginBottom: 'clamp(0.75rem, 2.5vw, 1.1rem)',
+            marginBottom: 'clamp(0.5rem, 1.5vw, 0.75rem)',
             fontSize: 'clamp(2rem, 7vw, 4.5rem)',
             animation: 'fadeUp 0.7s 0.1s ease both',
             letterSpacing: '-0.01em',
@@ -125,9 +116,26 @@ export default function Hero() {
               lineHeight: 1.1,
             }}
           >
-            Loveland Holidays
+            {SITE.name}
           </em>
         </h1>
+        
+
+        {/* Slogan */}
+        <p
+          style={{
+            color: 'rgba(168, 216, 240, 0.85)',
+            fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
+            fontFamily: 'Georgia, "Times New Roman", serif',
+            fontStyle: 'italic',
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            marginBottom: 'clamp(1rem, 3vw, 1.5rem)',
+            animation: 'fadeUp 0.7s 0.15s ease both',
+          }}
+        >
+          {SITE.slogan}
+        </p>
 
         {/* Sub-heading */}
         <p
@@ -143,7 +151,7 @@ export default function Hero() {
             padding: '0 0.25rem',
           }}
         >
-          Experience God's Own Country like never before.
+          {SITE.tagline}.
           Curated journeys through Kerala's emerald backwaters,
           misty hills &amp; golden shores.
         </p>
@@ -191,9 +199,9 @@ export default function Hero() {
             animation: 'fadeUp 0.7s 0.4s ease both',
           }}
         >
-          {STATS.map(({ value, label }, i) => (
+          {stats.map(({ id, number, label }, i) => (
             <div
-              key={label}
+              key={id}
               style={{
                 color: 'white',
                 textAlign: 'center',
@@ -205,7 +213,7 @@ export default function Hero() {
               }}
             >
               {/* Divider between stats (except last) */}
-              {i < STATS.length - 1 && (
+              {i < stats.length - 1 && (
                 <span
                   aria-hidden="true"
                   style={{
@@ -227,7 +235,7 @@ export default function Hero() {
                   marginBottom: '0.3rem',
                 }}
               >
-                {value}
+                {number}
               </div>
               <div
                 style={{
@@ -253,7 +261,7 @@ export default function Hero() {
             animation: 'fadeUp 0.7s 0.5s ease both',
           }}
         >
-          {IMAGES.map((_, i) => (
+          {HERO_IMAGES.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
