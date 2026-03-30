@@ -33,7 +33,33 @@ export const HERO_IMAGES = [
   {
     src:'/images/banner/banner4.jpg',
     label: 'Immerse yourself in the rich culture and traditions of Kerala',
-  }
+  },
+  
+  {
+    src:'/images/banner/bannernew1.jpeg',
+    label: 'Immerse yourself in the rich culture and traditions of Kerala',
+  },
+  {
+    src:'/images/banner/bannernew2.jpeg',
+    label: 'Immerse yourself in the rich culture and traditions of Kerala',
+  },
+  {
+    src:'/images/banner/bannernew3.jpeg',
+    label: 'Immerse yourself in the rich culture and traditions of Kerala',
+  },
+  {
+    src:'/images/banner/bannernew4.jpeg',
+    label: 'Immerse yourself in the rich culture and traditions of Kerala',
+  },
+  {
+    src:'/images/banner/bannernew5.jpeg',
+    label: 'Immerse yourself in the rich culture and traditions of Kerala',
+  },
+  {
+    src:'/images/banner/bannernew6.jpeg',
+    label: 'Immerse yourself in the rich culture and traditions of Kerala',
+  },
+
 ];
 
 
@@ -48,13 +74,20 @@ export const SITE = {
   gmail: 'lovelandholidays@gmail.com',
   hours: 'Monday – Saturday: 9 am – 7 pm',
   website: 'https://www.lovelandholidays.com',
+  // address: {
+  //   line1: 'Kalady Post, Yordhanapuram',
+  //   line2: 'Ernakulam District, Kerala',
+  //   pin: '683574',
+  //   mapSrc:
+  //     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.752!2d76.4209!3d10.1614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c0000000001%3A0x1!2sKalady%2C%20Kerala!5e0!3m2!1sen!2sin!4v1234567890',
+  // },
   address: {
-    line1: 'Kalady Post, Yordhanapuram',
-    line2: 'Ernakulam District, Kerala',
-    pin: '683574',
-    mapSrc:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.752!2d76.4209!3d10.1614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c0000000001%3A0x1!2sKalady%2C%20Kerala!5e0!3m2!1sen!2sin!4v1234567890',
-  },
+  line1: 'Nedumbassery, Near Cochin International Airport',
+  line2: 'Ernakulam District, Kerala',
+  pin: '683574',
+  mapSrc:
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.739!2d76.4019!3d10.1520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c0c9d3f1d1f%3A0xf4fef3c5d7a1a0c1!2sCochin%20International%20Airport!5e0!3m2!1sen!2sin!4v1700000000000',
+},
   social: {
     facebook: 'https://www.facebook.com/LoveLandHolidays?mibextid=wwXIfr&rdid=CERzQyVgQdvrc29u&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CtnKone3Y%2F%3Fmibextid%3DwwXIfr',
     instagram: '#',

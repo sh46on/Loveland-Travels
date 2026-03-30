@@ -43,6 +43,7 @@ export default function Contact() {
                 label="Get In Touch"
                 title={<>We're Here to <em style={{ fontStyle:'italic', color:'#0077b6' }}>Help You</em></>}
                 desc="Reach out to our Kerala travel experts — we're happy to help plan your perfect getaway."
+                className="text-left items-start"
               />
             </div>
 
