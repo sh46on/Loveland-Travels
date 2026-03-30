@@ -60,6 +60,18 @@ const ContactUs = () => {
         },
         EMAILJS.publicKey
       );
+      await emailjs.send(
+        EMAILJS.serviceId,
+        EMAILJS.userTemplateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          destination: formData.destination || 'Not provided',
+          message: formData.message,
+        },
+        EMAILJS.publicKey
+      );
 
       setSubmitted(true);
 

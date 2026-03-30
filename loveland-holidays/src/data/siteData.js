@@ -84,7 +84,7 @@ export const SITE = {
   address: {
   line1: 'Nedumbassery, Near Cochin International Airport',
   line2: 'Ernakulam District, Kerala',
-  pin: '683574',
+  pin: '683111',
   mapSrc:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.739!2d76.4019!3d10.1520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c0c9d3f1d1f%3A0xf4fef3c5d7a1a0c1!2sCochin%20International%20Airport!5e0!3m2!1sen!2sin!4v1700000000000',
 },
@@ -111,17 +111,39 @@ export const EMAILJS = {
   serviceId: 'YOUR_SERVICE_ID',   // EmailJS → Email Services → Service ID
   templateId: 'YOUR_TEMPLATE_ID',  // EmailJS → Email Templates → Template ID
   publicKey: 'YOUR_PUBLIC_KEY',   // EmailJS → Account → Public Key
+  userTemplateId: "YOUR_USER_TEMPLATE_ID", // Optional: for sending confirmation emails to users  
 };
 
 // New Enquiry from Loveland Holidays
+// Owner Template
+// To: your email
+// {{name}}, {{email}}, {{phone}}, {{destination}}, {{message}}
 
-// Name: {{name}}
-// Email: {{email}}
-// Phone: {{phone}}
-// Destination: {{destination}}
 
-// Message:
-// {{message}}
+
+// User Template
+// To Email: {{email}}
+
+// Subject: Thank you for contacting Loveland Holidays!
+
+// Hi {{name}},
+
+// Thank you for reaching out to Loveland Travels ✈️
+
+// We’ve successfully received your enquiry regarding **{{destination}}**.
+
+// Our travel experts will review your request and get in touch with you shortly to help plan your perfect trip.
+
+// If your enquiry is urgent, feel free to contact us directly.
+
+// 🌴 Wander | Wonder | Relax  
+// — Loveland Holidays Team
+
+
+
+
+
+
 
 // ─────────────────────────────────────────────────────────────────
 //  Other site data: services, tours, reviews, nav links, about page content, etc.

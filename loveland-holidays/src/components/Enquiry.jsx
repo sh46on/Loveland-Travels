@@ -53,9 +53,23 @@ const submit = async () => {
   setLoading(true);
 
   try {
+    // 1️ Send to OWNER
     await emailjs.send(
       EMAILJS.serviceId,
-      EMAILJS.templateId,
+      EMAILJS.templateId,  // user template
+      {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        destination: form.dest || 'Not provided',
+        message: form.message,
+      },
+      EMAILJS.publicKey
+    );
+    // 1️ Send to User
+    await emailjs.send(
+      EMAILJS.serviceId,
+      EMAILJS.userTemplateId, // user template
       {
         name: form.name,
         email: form.email,
