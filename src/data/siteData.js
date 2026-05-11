@@ -74,7 +74,7 @@ export const SITE = {
   gmail: 'lovelandholidays@gmail.com',
   hours: 'Monday – Saturday: 9 am – 7 pm',
   website: 'https://www.lovelandholidays.com',
-
+  
   address: {
   line1: `Airport- Kalady Road,
   Nedumbassery, Near Cochin International Airport`,
@@ -103,10 +103,10 @@ export const SITE = {
 //  Docs: https://www.emailjs.com/docs/
 // ─────────────────────────────────────────────────────────────────
 export const EMAILJS = {
-  serviceId: 'service_exz1sbj',   // EmailJS → Email Services → Service ID
-  templateId: 'template_0qz18rl',  // EmailJS → Email Templates → Template ID
-  publicKey: 'dqlwX87n_G-4gA3C1',   // EmailJS → Account → Public Key
-  userTemplateId: 'template_9k3yf6j', // Optional: for sending confirmation emails to users  
+  serviceId: '<service_id>',   // EmailJS → Email Services → Service ID
+  templateId: '<template_id>',  // EmailJS → Email Templates → Template ID
+  publicKey: '<public_key>',   // EmailJS → Account → Public Key
+  userTemplateId: "<template_id>>", // Optional: for sending confirmation emails to users  
 };
 
 
