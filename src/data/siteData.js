@@ -74,18 +74,12 @@ export const SITE = {
   gmail: 'lovelandholidays@gmail.com',
   hours: 'Monday – Saturday: 9 am – 7 pm',
   website: 'https://www.lovelandholidays.com',
-  // address: {
-  //   line1: 'Kalady Post, Yordhanapuram',
-  //   line2: 'Ernakulam District, Kerala',
-  //   pin: '683574',
-  //   mapSrc:
-  //     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.752!2d76.4209!3d10.1614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c0000000001%3A0x1!2sKalady%2C%20Kerala!5e0!3m2!1sen!2sin!4v1234567890',
-  // },
+
   address: {
   line1: `Airport- Kalady Road,
   Nedumbassery, Near Cochin International Airport`,
-  line2: 'Ernakulam District, Kerala 683572, India',
-  pin: '683111',
+  line2: 'Ernakulam District, Kerala, India',
+  pin: '683572',
   mapSrc:
     'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3927.2367922279836!2d76.39404277503331!3d10.161397989952391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDA5JzQxLjAiTiA3NsKwMjMnNDcuOCJF!5e0!3m2!1sen!2sin!4v1777456282719!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
 },
@@ -109,10 +103,10 @@ export const SITE = {
 //  Docs: https://www.emailjs.com/docs/
 // ─────────────────────────────────────────────────────────────────
 export const EMAILJS = {
-  serviceId: '<service_id>',   // EmailJS → Email Services → Service ID
-  templateId: '<template_id>',  // EmailJS → Email Templates → Template ID
-  publicKey: '<public_key>',   // EmailJS → Account → Public Key
-  userTemplateId: "<template_id>>", // Optional: for sending confirmation emails to users  
+  serviceId: 'service_exz1sbj',   // EmailJS → Email Services → Service ID
+  templateId: 'template_0qz18rl',  // EmailJS → Email Templates → Template ID
+  publicKey: 'dqlwX87n_G-4gA3C1',   // EmailJS → Account → Public Key
+  userTemplateId: 'template_9k3yf6j', // Optional: for sending confirmation emails to users  
 };
 
 

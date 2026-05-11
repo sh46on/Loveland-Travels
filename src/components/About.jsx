@@ -1,24 +1,25 @@
 import SectionHeader from '@/components/SectionHeader';
 import WaveSep       from '@/components/WaveSep';
+import { Hotel, Map, Car, Target } from 'lucide-react';
 
 const FEATURES = [
   {
-    icon:  '🏨',
+    icon:  Hotel,
     title: 'Premium Accommodations',
     desc:  'Carefully selected hotels, homestays & resorts across Kerala.',
   },
   {
-    icon:  '🗺️',
+    icon:  Map,
     title: 'Expert Local Guidance',
     desc:  'Knowledgeable guides who bring every destination to life.',
   },
   {
-    icon:  '🚗',
+    icon:  Car,
     title: 'Multi-language Drivers',
     desc:  'Comfortable travel with English, Hindi & regional language support.',
   },
   {
-    icon:  '🎯',
+    icon:  Target,
     title: 'Tailored Itineraries',
     desc:  'Every trip crafted uniquely for your interests and timeline.',
   },
@@ -136,15 +137,13 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      {/* Wave transition to white */}
     </section>
       <WaveSep fill="#ffffff" bgFill="#e6f4ff" />
     </>
   );
 }
 
-function FeatureRow({ icon, title, desc }) {
+function FeatureRow({ icon: Icon, title, desc }) {
   return (
     <div
       className="about-feature"
@@ -177,11 +176,10 @@ function FeatureRow({ icon, title, desc }) {
           display:        'flex',
           alignItems:     'center',
           justifyContent: 'center',
-          fontSize:       '1.2rem',
           flexShrink:      0,
         }}
       >
-        {icon}
+        <Icon size={18} color="#0077b6" strokeWidth={1.75} />
       </div>
       <div>
         <h4 style={{ fontSize: '0.92rem', fontWeight: 600, color: '#0d1b2a', marginBottom: '0.2rem' }}>

@@ -1,28 +1,29 @@
 import SectionHeader from '@/components/SectionHeader';
 import { SITE }      from '@/data/siteData';
 import WaveSep       from '@/components/WaveSep';
+import { Phone, MapPin, Mail, Clock } from 'lucide-react';
 
 
 const CONTACT_ITEMS = [
   {
-    icon:  '📞',
+    icon:  Phone,
     label: 'Phone',
     lines: [SITE.phone1, SITE.phone2],
     hrefs: [`tel:${SITE.phone1.replace(/\s/g,'')}`, `tel:${SITE.phone2.replace(/\s/g,'')}`],
   },
   {
-    icon:  '📍',
+    icon:  MapPin,
     label: 'Address',
     lines: [SITE.address.line1, SITE.address.line2, `PIN – ${SITE.address.pin}`],
   },
   {
-    icon:  '📧',
+    icon:  Mail,
     label: 'Email',
     lines: [SITE.email1, SITE.email2],
     hrefs: [`mailto:${SITE.email1}`, `mailto:${SITE.email2}`],
   },
   {
-    icon:  '🕐',
+    icon:  Clock,
     label: 'Office Hours',
     lines: ['Monday – Saturday: 9 am – 7 pm', 'Sunday: 10 am – 5 pm'],
   },
@@ -86,7 +87,7 @@ export default function Contact() {
    • Left-aligned text on every breakpoint
    • Compact single-row on mobile, roomy on larger screens
 ───────────────────────────────────────────────────────── */
-function ContactItem({ icon, label, lines, hrefs }) {
+function ContactItem({ icon: Icon, label, lines, hrefs }) {
   return (
     <div className="
       flex flex-row items-start gap-3 sm:gap-4
@@ -103,7 +104,7 @@ function ContactItem({ icon, label, lines, hrefs }) {
         text-base sm:text-lg
         mt-0.5
       ">
-        {icon}
+        <Icon size={18} className="text-[#0077b6] sm:w-5 sm:h-5" strokeWidth={1.75} />
       </div>
 
       {/* Text block */}
